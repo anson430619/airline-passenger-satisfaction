@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #6d28d9, #a855f7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 700;
+        }
+        .result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            padding: 20px;
+            border-radius: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .result-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        .satisfied {
+            background: #34c759; /* Green color */
+        }
+        .dissatisfied {
+            background: #ff3b30; /* Red color */
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .button:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+        .result-enter {
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        {% if prediction_text == "The Customer is Dissatisfied" %}
+            <div class="result dissatisfied result-enter">
+                <span class="result-icon">&#128577;</span> <!-- Sad face emoji -->
+                <span>{{ prediction_text }}</span>
+            </div>
+        {% else %}
+            <div class="result satisfied result-enter">
+                <span class="result-icon">&#128578;</span> <!-- Happy face emoji -->
+                <span>{{ prediction_text }}</span>
+            </div>
+        {% endif %}
+        <a class="button" href="/">Go back to homepage</a>
+    </div>
+</body>
+</html>

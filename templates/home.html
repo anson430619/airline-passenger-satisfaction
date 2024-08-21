@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Passenger Satisfaction</title>
+    <style>
+        body {
+            background-image: url('/static/airline1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350vh;
+        }
+
+        .registration-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],      input[type="number"],input[type="submit"], .rating {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .rating label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .rating input {
+            margin-right: 5px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h1>AIRLINE PASSENGER SATISFACTION PREDICTION</h1>
+        <h2>Customer Feedback Form</h2>
+        
+        <form action="/predict" method="POST">
+            <div class="section">
+                <label for="ID">ID:</label>
+                <input type="number" id="ID" name="ID">
+            </div>
+
+            <div class="section">
+                <label for="Gender">Gender:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Gender" value="0">Male</label>
+                    <label><input type="radio" name="Gender" value="1">Female</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Age">Age:</label>
+                <input type="number" id="Age" name="Age">
+            </div>
+
+            <div class="section">
+                <label for="Customer-Type">Customer Type:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Customer-Type" value="1">First-time</label>
+                    <label><input type="radio" name="Customer-Type" value="0">Returning</label>
+                </div>
+            </div>
+            
+            <div class="section">
+                <label for="Type-of-travel">Type of Travel:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Type-of-travel" value="1">Personal</label>
+                    <label><input type="radio" name="Type-of-travel" value="0">Business</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Class">Class:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Class" value="0">Business</label>
+                    <label><input type="radio" name="Class" value="1">Economy</label>
+                    <label><input type="radio" name="Class" value="2">Economy Plus</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Flight-Distance">Flight Distance:</label>
+                <input type="number" id="Flight-Distance" name="Flight-Distance">
+            </div>
+
+            <div class="section">
+                <label for="Departure-Delay">Departure Delay:</label>
+                <input type="number" id="Departure-Delay" name="Departure-Delay">
+            </div>
+
+            <div class="section">
+                <label for="Arrival-Delay">Arrival Delay:</label>
+                <input type="number" id="Arrival-Delay" name="Arrival-Delay">
+            </div>
+
+            <div class="section">
+                <label for="Departure-and-Arrival-Time-Convenience">Departure and Arrival Time Convenience:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Departure-and-Arrival-Time-Convenience" value="1">1</label>
+                    <label><input type="radio" name="Departure-and-Arrival-Time-Convenience" value="2">2</label>
+                    <label><input type="radio" name="Departure-and-Arrival-Time-Convenience" value="3">3</label>
+                    <label><input type="radio" name="Departure-and-Arrival-Time-Convenience" value="4">4</label>
+                    <label><input type="radio" name="Departure-and-Arrival-Time-Convenience" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Ease-of-Online-Booking">Ease of Online Booking:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Ease-of-Online-Booking" value="1">1</label>
+                    <label><input type="radio" name="Ease-of-Online-Booking" value="2">2</label>
+                    <label><input type="radio" name="Ease-of-Online-Booking" value="3">3</label>
+                    <label><input type="radio" name="Ease-of-Online-Booking" value="4">4</label>
+                    <label><input type="radio" name="Ease-of-Online-Booking" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Check-in-Service">Check-in Service:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Check-in-Service" value="1">1</label>
+                    <label><input type="radio" name="Check-in-Service" value="2">2</label>
+                    <label><input type="radio" name="Check-in-Service" value="3">3</label>
+                    <label><input type="radio" name="Check-in-Service" value="4">4</label>
+                    <label><input type="radio" name="Check-in-Service" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Online-Boarding">Online Boarding:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Online-Boarding" value="1">1</label>
+                    <label><input type="radio" name="Online-Boarding" value="2">2</label>
+                    <label><input type="radio" name="Online-Boarding" value="3">3</label>
+                    <label><input type="radio" name="Online-Boarding" value="4">4</label>
+                    <label><input type="radio" name="Online-Boarding" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Gate-Location">Gate Location:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Gate-Location" value="1">1</label>
+                    <label><input type="radio" name="Gate-Location" value="2">2</label>
+                    <label><input type="radio" name="Gate-Location" value="3">3</label>
+                    <label><input type="radio" name="Gate-Location" value="4">4</label>
+                    <label><input type="radio" name="Gate-Location" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="On-board-Service">On-board Service:</label>
+                <div class="rating">
+                    <label><input type="radio" name="On-board-Service" value="1">1</label>
+                    <label><input type="radio" name="On-board-Service" value="2">2</label>
+                    <label><input type="radio" name="On-board-Service" value="3">3</label>
+                    <label><input type="radio" name="On-board-Service" value="4">4</label>
+                    <label><input type="radio" name="On-board-Service" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Seat-Comfort">Seat Comfort:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Seat-Comfort" value="1">1</label>
+                    <label><input type="radio" name="Seat-Comfort" value="2">2</label>
+                    <label><input type="radio" name="Seat-Comfort" value="3">3</label>
+                    <label><input type="radio" name="Seat-Comfort" value="4">4</label>
+                    <label><input type="radio" name="Seat-Comfort" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Leg-Room-Service">Leg Room Service:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Leg-Room-Service" value="1">1</label>
+                    <label><input type="radio" name="Leg-Room-Service" value="2">2</label>
+                    <label><input type="radio" name="Leg-Room-Service" value="3">3</label>
+                    <label><input type="radio" name="Leg-Room-Service" value="4">4</label>
+                    <label><input type="radio" name="Leg-Room-Service" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Cleanliness">Cleanliness:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Cleanliness" value="1">1</label>
+                    <label><input type="radio" name="Cleanliness" value="2">2</label>
+                    <label><input type="radio" name="Cleanliness" value="3">3</label>
+                    <label><input type="radio" name="Cleanliness" value="4">4</label>
+                    <label><input type="radio" name="Cleanliness" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Food-and-Drink">Food and Drink:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Food-and-Drink" value="1">1</label>
+                    <label><input type="radio" name="Food-and-Drink" value="2">2</label>
+                    <label><input type="radio" name="Food-and-Drink" value="3">3</label>
+                    <label><input type="radio" name="Food-and-Drink" value="4">4</label>
+                    <label><input type="radio" name="Food-and-Drink" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="In-flight-Service">In-flight Service:</label>
+                <div class="rating">
+                    <label><input type="radio" name="In-flight-Service" value="1">1</label>
+                    <label><input type="radio" name="In-flight-Service" value="2">2</label>
+                    <label><input type="radio" name="In-flight-Service" value="3">3</label>
+                    <label><input type="radio" name="In-flight-Service" value="4">4</label>
+                    <label><input type="radio" name="In-flight-Service" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="In-flight-Wifi-Service">In-flight Wifi Service:</label>
+                <div class="rating">
+                    <label><input type="radio" name="In-flight-Wifi-Service" value="1">1</label>
+                    <label><input type="radio" name="In-flight-Wifi-Service" value="2">2</label>
+                    <label><input type="radio" name="In-flight-Wifi-Service" value="3">3</label>
+                    <label><input type="radio" name="In-flight-Wifi-Service" value="4">4</label>
+                    <label><input type="radio" name="In-flight-Wifi-Service" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="In-flight-Entertainment">In-flight Entertainment:</label>
+                <div class="rating">
+                    <label><input type="radio" name="In-flight-Entertainment" value="1">1</label>
+                    <label><input type="radio" name="In-flight-Entertainment" value="2">2</label>
+                    <label><input type="radio" name="In-flight-Entertainment" value="3">3</label>
+                    <label><input type="radio" name="In-flight-Entertainment" value="4">4</label>
+                    <label><input type="radio" name="In-flight-Entertainment" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="Baggage-Handling">Baggage Handling:</label>
+                <div class="rating">
+                    <label><input type="radio" name="Baggage-Handling" value="1">1</label>
+                    <label><input type="radio" name="Baggage-Handling" value="2">2</label>
+                    <label><input type="radio" name="Baggage-Handling" value="3">3</label>
+                    <label><input type="radio" name="Baggage-Handling" value="4">4</label>
+                    <label><input type="radio" name="Baggage-Handling" value="5">5</label>
+                </div>
+            </div>
+
+            <input type="submit" value="predict">
+        </form>
+    <br>
+        <h1 style="text-align: center;">{{ prediction_text }}</h1><br>
+
+    </div>
+</body>
+</html>
